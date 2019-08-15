@@ -26,12 +26,113 @@
 </html>
 <body>
 <main class="content">
+  <section class="outer">
+  <article id="post-blog-deploy" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-<section class="outer">
+    <h1 class="article-title" itemprop="name">
+      如何搭建Hexo + Github.io + Ocean博客
+    </h1>
   
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/15/blog-deploy/" class="article-date">
+  <time datetime="2019-08-15T06:17:01.000Z" itemprop="datePublished">2019-08-15</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h5 id="程序猿都应有一个博客"><a href="#程序猿都应有一个博客" class="headerlink" title="程序猿都应有一个博客"></a><code>程序猿都应有一个博客</code></h5><h6 id="所以：热气腾腾的地址来了"><a href="#所以：热气腾腾的地址来了" class="headerlink" title="所以：热气腾腾的地址来了"></a>所以：<a href="https://Yuanyuanyuanc.github.io" target="_blank" rel="noopener">热气腾腾的地址来了</a></h6><a id="more"></a>
+
+<h6 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h6><ol>
+<li><p><code>npm/cnpm install/i -g hexo</code> 全局安装<code>Hexo</code></p>
+</li>
+<li><p><code>hexo init hexo-blog</code> 初始化<code>Hexo</code></p>
+</li>
+<li><p><code>cd hexo-blo</code> 进入项目目录</p>
+</li>
+<li><p><code>git clone https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</code>  安装Ocean主题</p>
+</li>
+<li><p>目录 <code>themes</code> 中 <code>_config.yml</code> 选择 <code>theme: ocean</code> 启用主题</p>
+</li>
+<li><p><code>hexo generate</code> 简写 <code>hexo g</code> 生成静态文件</p>
+</li>
+<li><p><code>hexo server</code>     简写 <code>hexo s</code> 启动服务 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+</li>
+<li><p><code>hexo deploy</code>     简写 <code>hexo d</code> 部署网站</p>
+</li>
+</ol>
+<h6 id="本地环境有git的话-配置好deploy部署之后就可以用xxx-github-io访问了"><a href="#本地环境有git的话-配置好deploy部署之后就可以用xxx-github-io访问了" class="headerlink" title="本地环境有git的话 配置好deploy部署之后就可以用xxx.github.io访问了"></a>本地环境有<code>git</code>的话 配置好<code>deploy</code>部署之后就可以用<code>xxx.github.io</code>访问了</h6><h6 id="如果没有git请移步-廖雪峰git教程-配置git"><a href="#如果没有git请移步-廖雪峰git教程-配置git" class="headerlink" title="如果没有git请移步 廖雪峰git教程 配置git"></a>如果没有<code>git</code>请移步 <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰git教程</a> 配置<code>git</code></h6><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">主配置文件</span> <span class="string">_config.yml</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:(github账户名)/(github账户名).github.io</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="hexo命令："><a href="#hexo命令：" class="headerlink" title="hexo命令："></a>hexo命令：</h6><ul>
+<li><p><code>hexo publish [layout] &lt;filename&gt;</code> 发表草稿</p>
+</li>
+<li><p><code>hexo render &lt;file1&gt; [file2] ...</code> 渲染文件</p>
+</li>
+<li><p><code>hexo clean</code> 清除缓存文件</p>
+</li>
+<li><p><code>hexo list &lt;type&gt;</code> 列出网站资料</p>
+</li>
+<li><p><code>hexo version</code> 显示<code>Hexo</code>版本</p>
+</li>
+<li><p><code>hexo new [layout] &lt;title&gt;</code> 新建一篇文章</p>
+</li>
+</ul>
+<h5 id="其他坑点"><a href="#其他坑点" class="headerlink" title="其他坑点"></a>其他<code>坑点</code></h5><h6 id="更换ocean的导航名称"><a href="#更换ocean的导航名称" class="headerlink" title="更换ocean的导航名称"></a>更换<code>ocean</code>的导航名称</h6><p>找了半天不知道怎么改 最后看了一下模板代码</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`/themes/ocean/_config.yml`</span></span><br><span class="line"></span><br><span class="line">menu:</span><br><span class="line">  首页: /</span><br><span class="line">  归档: /archives</span><br><span class="line">  相册: /gallery</span><br><span class="line">  关于: /about</span><br><span class="line"></span><br><span class="line">将<span class="code">`首页/归档/相册/关于`</span>改成你想要的<span class="code">`文字/字符`</span>即可</span><br></pre></td></tr></table></figure>
+
+<h6 id="本地搜索不起作用"><a href="#本地搜索不起作用" class="headerlink" title="本地搜索不起作用"></a>本地搜索不起作用</h6><p>安装插件 <a href="https://github.com/theme-next/hexo-generator-searchdb" target="_blank" rel="noopener">hexo-generator-searchdb</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<h6 id="如需更新主题"><a href="#如需更新主题" class="headerlink" title="如需更新主题"></a>如需更新主题</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/ocean</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<h6 id="附：ocean的🦈贼好看"><a href="#附：ocean的🦈贼好看" class="headerlink" title="附：ocean的🦈贼好看"></a>附：<code>ocean的🦈贼好看</code></h6><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo文档</a></p>
+<p><a href="https://zhwangart.github.io/2018/11/30/Ocean/" target="_blank" rel="noopener">Ocean文档</a></p>
+<p><a href="https://zhwangart.github.io/2019/07/02/Ocean-Issues/" target="_blank" rel="noopener">关于 Ocean 使用中的问题</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/15/blog-deploy/" data-id="cjzcf1mmd0000rtdhne2ijkt6"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
 </section>
-
-
   <footer class="footer">
   <div class="outer">
     <div class="float-right">
