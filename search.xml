@@ -2,37 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[如何搭建Hexo + Github.io + Ocean博客]]></title>
-    <url>%2F2019%2F08%2F15%2F%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[程序猿都应有一个博客不知道在哪见过这句话 所以：热气腾腾的地址来了搭建步骤 npm/cnpm install/i -g hexo 全局安装Hexo hexo init hexo-blog 初始化Hexo cd hexo-blo 进入项目目录 git clone https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean 安装Ocean主题 目录 themes 中 _config.yml 选择 theme: ocean 启用主题 hexo generate 简写 hexo g 生成静态文件 hexo server 简写 hexo s 启动服务 http://localhost:4000/ hexo deploy 简写 hexo d 部署网站 本地环境有git的话 配置好deploy部署之后就可以用xxx.github.io访问了如果没有git请移步 廖雪峰git教程 配置git12345主配置文件 _config.ymldeploy: type: git repository: git@github.com:(github账户名)/(github账户名).github.io branch: master hexo命令： hexo publish [layout] &lt;filename&gt; 发表草稿 hexo render &lt;file1&gt; [file2] ... 渲染文件 hexo clean 清除缓存文件 hexo list &lt;type&gt; 列出网站资料 hexo version 显示Hexo版本 hexo new [layout] &lt;title&gt; 新建一篇文章 其他坑点更换ocean的导航名称找了半天不知道怎么改 最后看了一下模板代码 123456789`/themes/ocean/_config.yml`menu: 首页: / 归档: /archives 相册: /gallery 关于: /about 将`首页/归档/相册/关于`改成你想要的`文字/字符`即可 如需更新主题12$ cd themes/ocean$ git pull 附：ocean的🦈贼好看Hexo文档 Ocean文档]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World12312321]]></title>
-    <url>%2F2019%2F07%2F18%2F3%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World2]]></title>
-    <url>%2F2019%2F07%2F18%2F1%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F07%2F18%2F4%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F07%2F18%2F2%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[新增文章置顶1]]></title>
-    <url>%2F2019%2F07%2F18%2Fxx%2F</url>
-    <content type="text"><![CDATA[title: asdasdas]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F07%2F18%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <url>%2F2019%2F08%2F15%2Fblog-deploy%2F</url>
+    <content type="text"><![CDATA[程序猿都应有一个博客不知道在哪见过这句话 所以：热气腾腾的地址来了 搭建步骤 npm/cnpm install/i -g hexo 全局安装Hexo hexo init hexo-blog 初始化Hexo cd hexo-blo 进入项目目录 git clone https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean 安装Ocean主题 目录 themes 中 _config.yml 选择 theme: ocean 启用主题 hexo generate 简写 hexo g 生成静态文件 hexo server 简写 hexo s 启动服务 http://localhost:4000/ hexo deploy 简写 hexo d 部署网站 本地环境有git的话 配置好deploy部署之后就可以用xxx.github.io访问了如果没有git请移步 廖雪峰git教程 配置git12345主配置文件 _config.ymldeploy: type: git repository: git@github.com:(github账户名)/(github账户名).github.io branch: master hexo命令： hexo publish [layout] &lt;filename&gt; 发表草稿 hexo render &lt;file1&gt; [file2] ... 渲染文件 hexo clean 清除缓存文件 hexo list &lt;type&gt; 列出网站资料 hexo version 显示Hexo版本 hexo new [layout] &lt;title&gt; 新建一篇文章 其他坑点更换ocean的导航名称找了半天不知道怎么改 最后看了一下模板代码 123456789`/themes/ocean/_config.yml`menu: 首页: / 归档: /archives 相册: /gallery 关于: /about将`首页/归档/相册/关于`改成你想要的`文字/字符`即可 本地搜索不起作用安装插件 hexo-generator-searchdb 1$ npm install hexo-generator-searchdb --save 如需更新主题12$ cd themes/ocean$ git pull 附：ocean的🦈贼好看Hexo文档 Ocean文档 关于 Ocean 使用中的问题]]></content>
   </entry>
 </search>
