@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="我的文档">
+  
+  
+    <meta name="description" content="远的文档">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    JavaScript防抖节流函数了解一下 |
+    
+    赵明远的秘密仓库</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-防抖节流函数了解一下" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript防抖节流函数了解一下
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/20/防抖节流函数了解一下/" class="article-date">
+  <time datetime="2019-08-20T06:22:57.000Z" itemprop="datePublished">2019-08-20</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="总结一下防抖节流函数"><a href="#总结一下防抖节流函数" class="headerlink" title="总结一下防抖节流函数"></a>总结一下防抖节流函数</h3><a id="more"></a>
+
+<h5 id="节流（throttle）"><a href="#节流（throttle）" class="headerlink" title="节流（throttle）"></a>节流（throttle）</h5><ul>
+<li><p>所谓节流，就是指连续触发事件但是在 n 秒中只执行一次函数。 </p>
+</li>
+<li><p>节流会稀释函数的执行频率。</p>
+</li>
+<li><p>使用场景：</p>
+<pre><code>搜索联想，用户在不断输入值时，用防抖来节约请求资源
+window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次
+比如是否滑到底部自动加载更多，用throttle来判断</code></pre></li>
+</ul>
+<h6 id="写法一-时间戳"><a href="#写法一-时间戳" class="headerlink" title="写法一 (时间戳)"></a>写法一 (时间戳)</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @desc 节流函数</span></span><br><span class="line"><span class="comment"> * @param fn 函数</span></span><br><span class="line"><span class="comment"> * @param time 延迟执行毫秒数</span></span><br><span class="line"><span class="comment"> * @return function 返回一个函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span> (<span class="params">fn, time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> next = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> context = <span class="keyword">this</span></span><br><span class="line">		<span class="keyword">const</span> args = <span class="built_in">arguments</span></span><br><span class="line">		<span class="keyword">const</span> now = <span class="built_in">Date</span>.now()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (now - next &gt; time) &#123;</span><br><span class="line">			fn.apply(context, args)</span><br><span class="line">			next = now</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="写法二-定时器"><a href="#写法二-定时器" class="headerlink" title="写法二 (定时器)"></a>写法二 (定时器)</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @desc 节流函数</span></span><br><span class="line"><span class="comment"> * @param fn 函数</span></span><br><span class="line"><span class="comment"> * @param time 延迟执行毫秒数</span></span><br><span class="line"><span class="comment"> * @return function 返回一个函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span> (<span class="params">fn, time</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> next = <span class="literal">null</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> context = <span class="keyword">this</span></span><br><span class="line">		<span class="keyword">const</span> args = <span class="built_in">arguments</span></span><br><span class="line">				</span><br><span class="line">		<span class="keyword">if</span> (!next) &#123;</span><br><span class="line">			next = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">				next = <span class="literal">null</span></span><br><span class="line">				fn.apply(context, args)</span><br><span class="line">			&#125;, time)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="防抖（debounce）"><a href="#防抖（debounce）" class="headerlink" title="防抖（debounce）"></a>防抖（debounce）</h5><ul>
+<li><p>所谓防抖，就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。</p>
+</li>
+<li><p>使用场景：</p>
+<pre><code>鼠标不断点击触发，mousedown(单位时间内只触发一次)
+监听滚动事件</code></pre></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @desc 防抖函数</span></span><br><span class="line"><span class="comment"> * @param fn 函数</span></span><br><span class="line"><span class="comment"> * @param time 延迟执行毫秒数</span></span><br><span class="line"><span class="comment"> * @return function 返回一个函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">fn, time</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> timer = <span class="literal">null</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> context = <span class="keyword">this</span></span><br><span class="line">		<span class="keyword">const</span> args = <span class="built_in">arguments</span></span><br><span class="line"></span><br><span class="line">		timer &amp;&amp; clearTimeout(timer)</span><br><span class="line">	  timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> fn.apply(context, args), time)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h5><p><a href="https://github.com/mqyqingfeng/Blog/issues/26" target="_blank" rel="noopener">mqyqingfeng大佬的文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/20/防抖节流函数了解一下/" data-id="cjzjjkdbq0004gvdhqvtnjkl9"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/08/16/Scss常用Mixin了解一下/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">分享我Scss常用的代码片段</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 赵明远的秘密仓库</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="赵明远的秘密仓库"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
